@@ -1,5 +1,5 @@
 objs_JN5164_ToCoStick/LcdFont.o:  \
- /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor/Common/Source/LcdFont.c \
+ /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/Common/Source/LcdFont.c \
   /cygdrive/c/TWESDK/516x/Components/Common/Include/jendefs.h \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/include/stdarg.h \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/include/stdio.h \
@@ -18,7 +18,7 @@ objs_JN5164_ToCoStick/LcdFont.o:  \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/include/machine/types.h \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/include/sys/features.h \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/include/sys/stdio.h \
-  /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor/Common/Source/LcdFont.h
+  /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/Common/Source/LcdFont.h
 
 /cygdrive/c/TWESDK/516x/Components/Common/Include/jendefs.h:
 
@@ -56,4 +56,4 @@ objs_JN5164_ToCoStick/LcdFont.o:  \
 
 /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/include/sys/stdio.h:
 
-/cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor/Common/Source/LcdFont.h:
+/cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/Common/Source/LcdFont.h:

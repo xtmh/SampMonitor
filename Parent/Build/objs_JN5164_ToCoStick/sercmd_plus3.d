@@ -1,5 +1,5 @@
 objs_JN5164_ToCoStick/sercmd_plus3.o:  \
- /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor/Common/Source/sercmd_plus3.c \
+ /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/Common/Source/sercmd_plus3.c \
   /cygdrive/c/TWESDK/516x/Components/Common/Include/jendefs.h \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/include/stdarg.h \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/include/stdio.h \
@@ -18,10 +18,10 @@ objs_JN5164_ToCoStick/sercmd_plus3.o:  \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/include/machine/types.h \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/include/sys/features.h \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/include/sys/stdio.h \
-  /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor/Common/Source/sercmd_plus3.h \
-  /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor/../../Wks_libToCoNet/libToCoNet/include/ToCoNetUtils/serial.h \
-  /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor/../../Wks_libToCoNet/libToCoNet/include/ToCoNetUtils/uart.h \
-  /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor/../../Wks_libToCoNet/libToCoNet/include/ToCoNetUtils/fprintf.h
+  /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/Common/Source/sercmd_plus3.h \
+  /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/../../Wks_libToCoNet/libToCoNet/include/ToCoNetUtils/serial.h \
+  /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/../../Wks_libToCoNet/libToCoNet/include/ToCoNetUtils/uart.h \
+  /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/../../Wks_libToCoNet/libToCoNet/include/ToCoNetUtils/fprintf.h
 
 /cygdrive/c/TWESDK/516x/Components/Common/Include/jendefs.h:
 
@@ -59,10 +59,10 @@ objs_JN5164_ToCoStick/sercmd_plus3.o:  \
 
 /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/include/sys/stdio.h:
 
-/cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor/Common/Source/sercmd_plus3.h:
+/cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/Common/Source/sercmd_plus3.h:
 
-/cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor/../../Wks_libToCoNet/libToCoNet/include/ToCoNetUtils/serial.h:
+/cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/../../Wks_libToCoNet/libToCoNet/include/ToCoNetUtils/serial.h:
 
-/cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor/../../Wks_libToCoNet/libToCoNet/include/ToCoNetUtils/uart.h:
+/cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/../../Wks_libToCoNet/libToCoNet/include/ToCoNetUtils/uart.h:
 
-/cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor/../../Wks_libToCoNet/libToCoNet/include/ToCoNetUtils/fprintf.h:
+/cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/../../Wks_libToCoNet/libToCoNet/include/ToCoNetUtils/fprintf.h:

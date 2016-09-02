@@ -57,6 +57,12 @@
 #define TOCONET_DEBUG_LEVEL 0
 //#define USE_LCD
 
+#define	ToCoStick
+
+#ifndef	ToCoStick
+#define DO4   9  // デジタル出力 4
+#endif
+
 #ifdef USE_LCD
 #include "LcdDriver.h"
 #include "LcdDraw.h"
@@ -391,6 +397,14 @@ static void vInitHardware(int f_warm_start) {
 	vPortSetHi( PORT_OUT2 );
 	vPortAsOutput( PORT_OUT2 );
 
+#ifndef	ToCoStick
+	/////////////////////////////////
+    // 使用ポートの設定
+    vPortAsOutput(DO4);
+    vPortSetLo(DO4);
+    /////////////////////////////////
+#endif
+
 	// LCD の設定
 #ifdef USE_LCD
 	vLcdInit();
@@ -440,6 +454,10 @@ static void vProcessEvCore(tsEvent *pEv, teEvent eEvent, uint32 u32evarg) {
 	if (eEvent == E_EVENT_TICK_SECOND) {
 		u32sec++;
 		//u32sec+=2;			//	***
+#ifndef	ToCoStick
+		////////////////////////////////////////////////////
+		bPortRead(DO4) ? vPortSetHi(DO4) : vPortSetLo(DO4);
+#endif
 	}
 
 	switch (pEv->eState) {

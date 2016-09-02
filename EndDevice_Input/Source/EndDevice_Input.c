@@ -62,7 +62,7 @@
 //	追加ｺｰﾄﾞ
 #include "ToCoNet.h"
 #define DI1  12  // デジタル入力 1
-#define DO4   9  // デジタル出力 4
+#define DO4   4//9  // デジタル出力 4
 
 
 /****************************************************************************/
@@ -91,6 +91,7 @@ tsCbHandler *psCbHandler = NULL;
 /****************************************************************************/
 /***        Local Function Prototypes                                     ***/
 /****************************************************************************/
+static void vProcessEvCore(tsEvent *pEv, teEvent eEvent, uint32 u32evarg);
 static void vInitHardware(int f_warm_start);
 static void vInitPulseCounter();
 static void vInitADC();
@@ -119,23 +120,7 @@ void (*pf_cbProcessSerialCmd)(tsSerCmd_Context *);
 /***        Functions                                                     ***/
 /****************************************************************************/
 
-// ユーザ定義のイベントハンドラ
-static void vProcessEvCore(tsEvent *pEv, teEvent eEvent, uint32 u32evarg)
-{
-	//	vPortSetHi(DO4);	//	点灯する
-	static bool_t b=TRUE;
 
-	b = !b;
-	if(b)	vPortSetHi(DO4);
-	else	vPortSetLo(DO4);
-
-     // 1 秒周期のシステムタイマ通知
-	if (eEvent == E_EVENT_TICK_SECOND) {
-		//	ここに入ってこない！	***
-        // DO4 の Lo / Hi をトグル
-        bPortRead(DO4) ? vPortSetHi(DO4) : vPortSetLo(DO4);
-    }
-}
 
 /**
  * 始動時の処理
@@ -373,6 +358,31 @@ void cbAppColdStart(bool_t bAfterAhiInit) {
 }
 
 
+// ユーザ定義のイベントハンドラ
+static void vProcessEvCore(tsEvent *pEv, teEvent eEvent, uint32 u32evarg)
+{
+	//	vPortSetHi(DO4);	//	点灯する
+	/*
+	static bool_t b=TRUE;
+	b = !b;
+	if(b)	vPortSetHi(DO4);
+	else	vPortSetLo(DO4);
+	*/
+    // DO4 の Lo / Hi をトグル
+    //bPortRead(DO4) ? vPortSetHi(DO4) : vPortSetLo(DO4);
+
+     // 1 秒周期のシステムタイマ通知
+	if (eEvent == E_EVENT_TICK_SECOND) {
+		//	ここに入ってこない！	***
+        // DO4 の Lo / Hi をトグル
+        bPortRead(DO4) ? vPortSetHi(DO4) : vPortSetLo(DO4);
+    }
+	if(eEvent == E_EVENT_TICK_TIMER){
+	    // DO4 の Lo / Hi をトグル
+	    //bPortRead(DO4) ? vPortSetHi(DO4) : vPortSetLo(DO4);
+	}
+}
+
 /**
  * スリープ復帰時の処理
  * @param bAfterAhiInit
@@ -504,6 +514,8 @@ void cbToCoNet_vTxEvent(uint8 u8CbId, uint8 bStatus) {
 	if (psCbHandler && psCbHandler->pf_cbToCoNet_vTxEvent) {
 		(*psCbHandler->pf_cbToCoNet_vTxEvent)(u8CbId, bStatus);
 	}
+    // DO4 の Lo / Hi をトグル
+    //bPortRead(DO4) ? vPortSetHi(DO4) : vPortSetLo(DO4);
 
 	return;
 }
@@ -613,12 +625,13 @@ static void vInitHardware(int f_warm_start) {
 
 	/////////////////////////////////
     // 使用ポートの設定
-    vPortAsInput(DI1);
-    vPortAsOutput(DO4);
+    vPortAsInput(DI1);		//	DI1:12
+    vPortAsOutput(DO4);		//	DO4:9
     vPortSetLo(DO4);
     /////////////////////////////////
 
 	// PWM の初期化
+
 	if ( sAppData.sFlash.sData.u8mode == PKT_ID_IO_TIMER ) {
 # ifndef JN516x
 #  warning "IO_TIMER is not implemented on JN514x"
@@ -642,13 +655,14 @@ static void vInitHardware(int f_warm_start) {
 			sTimerPWM[i].u16duty = 1024; // 1024=Hi, 0:Lo
 			sTimerPWM[i].bPWMout = TRUE;
 			sTimerPWM[i].bDisableInt = TRUE; // 割り込みを禁止する指定
+			//sTimerPWM[i].bDisableInt = FALSE; // 割り込みを禁止する指定
 			sTimerPWM[i].u8Device = au8TimTbl[i];
 			vTimerConfig(&sTimerPWM[i]);
 			vTimerStart(&sTimerPWM[i]);
 		}
 # endif
 	}
-
+	/**/
 	// SMBUS の初期化
 
 //	if (IS_APPCONF_OPT_SHT21()) {

@@ -1,5 +1,5 @@
 objs_JN5164_ToCoStick/AddrKeyAry.o:  \
- /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor/Common/Source/AddrKeyAry.c \
+ /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/Common/Source/AddrKeyAry.c \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/include/string.h \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/include/_ansi.h \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/include/newlib.h \
@@ -11,7 +11,7 @@ objs_JN5164_ToCoStick/AddrKeyAry.o:  \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/include/sys/lock.h \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/include/stddef.h \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/include/sys/string.h \
-  /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor/Common/Source/AddrKeyAry.h \
+  /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/Common/Source/AddrKeyAry.h \
   /cygdrive/c/TWESDK/516x/Components/Common/Include/jendefs.h \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/include/stdarg.h \
   /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/include/stdio.h \
@@ -44,7 +44,7 @@ objs_JN5164_ToCoStick/AddrKeyAry.o:  \
 
 /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/include/sys/string.h:
 
-/cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor/Common/Source/AddrKeyAry.h:
+/cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/Common/Source/AddrKeyAry.h:
 
 /cygdrive/c/TWESDK/516x/Components/Common/Include/jendefs.h:
 
