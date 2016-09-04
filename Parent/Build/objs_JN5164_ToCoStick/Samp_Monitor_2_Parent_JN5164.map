@@ -1531,27 +1531,27 @@ LOAD /cygdrive/c/TWESDK/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/ba2/libgcc.
 .rodata         0x000800fc      0xd1d
  *(.rodata*)
  .rodata.str1.1
-                0x000800fc      0x311 objs_JN5164_ToCoStick/Parent.o
-                                0x316 (size before relaxing)
+                0x000800fc      0x30f objs_JN5164_ToCoStick/Parent.o
+                                0x314 (size before relaxing)
  .rodata.au8EncKey
-                0x0008040d       0x10 objs_JN5164_ToCoStick/common.o
-                0x0008040d                _au8EncKey
+                0x0008040b       0x10 objs_JN5164_ToCoStick/common.o
+                0x0008040b                _au8EncKey
  .rodata.str1.1
-                0x0008041d      0x4ee objs_JN5164_ToCoStick/Interactive.o
+                0x0008041b      0x4ee objs_JN5164_ToCoStick/Interactive.o
                                 0x505 (size before relaxing)
  .rodata.au8name_stop.5281
-                0x0008090b        0x2 objs_JN5164_ToCoStick/Interactive.o
+                0x00080909        0x2 objs_JN5164_ToCoStick/Interactive.o
  .rodata.au8name_parity.5280
-                0x0008090d        0x3 objs_JN5164_ToCoStick/Interactive.o
+                0x0008090b        0x3 objs_JN5164_ToCoStick/Interactive.o
  .rodata.au8name_bit.5279
-                0x00080910        0x2 objs_JN5164_ToCoStick/Interactive.o
+                0x0008090e        0x2 objs_JN5164_ToCoStick/Interactive.o
  .rodata.au8tbl.2209
-                0x00080912       0x11 objs_JN5164_ToCoStick/sercmd_ascii.o
+                0x00080910       0x11 objs_JN5164_ToCoStick/sercmd_ascii.o
  .rodata.u8tbl.2152
-                0x00080923       0x17 objs_JN5164_ToCoStick/sercmd_ascii.o
+                0x00080921       0x17 objs_JN5164_ToCoStick/sercmd_ascii.o
  .rodata.str1.1
-                0x0008093a       0x11 /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/../../Wks_libToCoNet/libToCoNet/lib/libToCoNet_JN5164.a(ToCoNet_mod_Tx.o)
- *fill*         0x0008094b        0x1 00
+                0x00080938       0x11 /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/../../Wks_libToCoNet/libToCoNet/lib/libToCoNet_JN5164.a(ToCoNet_mod_Tx.o)
+ *fill*         0x00080949        0x3 00
  .rodata.asStateFuncTbl
                 0x0008094c       0x38 /cygdrive/c/TWESDK/Wks_ToCoNet/Samp_Monitor_2/../../Wks_libToCoNet/libToCoNet/lib/libToCoNet_JN5164.a(ToCoNet_mod_Tx.o)
  .rodata.asStateFuncTbl

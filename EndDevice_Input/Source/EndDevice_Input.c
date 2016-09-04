@@ -61,13 +61,22 @@
 
 //	追加ｺｰﾄﾞ
 #include "ToCoNet.h"
-#define DI1  12  // デジタル入力 1
-#define DO4   4//9  // デジタル出力 4
+#define DI1		12	//	デジタル入力 1
+#define	DO3		4	//	デジタル出力 3
+#define DO4		9	//	デジタル出力 4
 
 
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
 /****************************************************************************/
+
+// デバッグメッセージ出力用
+#define DBG
+#ifdef DBG
+#define dbg(...) vfPrintf(&sSerStream, LB __VA_ARGS__)
+#else
+#define dbg(...)
+#endif
 
 /**
  * DI1 の割り込み（立ち上がり）で起床後
@@ -131,6 +140,9 @@ void cbAppColdStart(bool_t bAfterAhiInit) {
 		pvProcessEv1 = NULL;
 		pvProcessEv2 = NULL;
 		pf_cbProcessSerialCmd = NULL;
+
+		//	Test
+		//dbg("cold start");
 
 		// check DIO source
 		sAppData.bWakeupByButton = FALSE;
@@ -337,18 +349,10 @@ void cbAppColdStart(bool_t bAfterAhiInit) {
 			ToCoNet_Event_Register_State_Machine(pvProcessEv2);
 		}
 
-		////////////////////////////////////////////////////////////////////
-		//	イベント定義
-	    if (!bAfterAhiInit) {
-	    	//	初回
-	        // ユーザ定義のイベントハンドラを登録
-	        //ToCoNet_Event_Register_State_Machine(vProcessEvCore);
-	    } else {
-	    	//	二回目以降
-	        // ユーザ定義のイベントハンドラを登録
-	        ToCoNet_Event_Register_State_Machine(vProcessEvCore);
-	        //vPortAsOutput(DO4);
-	    }
+        // ユーザ定義のイベントハンドラを登録
+        ToCoNet_Event_Register_State_Machine(vProcessEvCore);
+        //vPortSetLo(DIO_SNS_POWER);
+        vPortSetLo(DO3);
 		////////////////////////////////////////////////////////////////////
 
 		// ToCoNet DEBUG
@@ -361,21 +365,13 @@ void cbAppColdStart(bool_t bAfterAhiInit) {
 // ユーザ定義のイベントハンドラ
 static void vProcessEvCore(tsEvent *pEv, teEvent eEvent, uint32 u32evarg)
 {
-	//	vPortSetHi(DO4);	//	点灯する
-	/*
-	static bool_t b=TRUE;
-	b = !b;
-	if(b)	vPortSetHi(DO4);
-	else	vPortSetLo(DO4);
-	*/
-    // DO4 の Lo / Hi をトグル
-    //bPortRead(DO4) ? vPortSetHi(DO4) : vPortSetLo(DO4);
+	//dbg("vProcessEvCore");
 
      // 1 秒周期のシステムタイマ通知
 	if (eEvent == E_EVENT_TICK_SECOND) {
 		//	ここに入ってこない！	***
-        // DO4 の Lo / Hi をトグル
-        bPortRead(DO4) ? vPortSetHi(DO4) : vPortSetLo(DO4);
+        // DO3 の Lo / Hi をトグル
+        bPortRead(DO3) ? vPortSetHi(DO3) : vPortSetLo(DO3);
     }
 	if(eEvent == E_EVENT_TICK_TIMER){
 	    // DO4 の Lo / Hi をトグル
@@ -476,20 +472,6 @@ void cbToCoNet_vMain(void) {
 	if (psCbHandler && psCbHandler->pf_cbToCoNet_vMain) {
 		(*psCbHandler->pf_cbToCoNet_vMain)();
 	}
-	/////////////////////////////////
-    // DI1: Lo -> DO4: Hi,  DI1: Hi -> DO4: Lo
-    //vPortSet_TrueAsLo(DO4, !bPortRead(DI1));
-	/*
-	b = !b;
-	if(b){
-		vPortSetLo(DO4);
-	}else{
-	    vPortSetHi(DO4);
-	}
-	*/
-    // DO4 の Lo / Hi をトグル
-    //bPortRead(DO4) ? vPortSetHi(DO4) : vPortSetLo(DO4);
-    /////////////////////////////////
 }
 
 /**
@@ -514,8 +496,6 @@ void cbToCoNet_vTxEvent(uint8 u8CbId, uint8 bStatus) {
 	if (psCbHandler && psCbHandler->pf_cbToCoNet_vTxEvent) {
 		(*psCbHandler->pf_cbToCoNet_vTxEvent)(u8CbId, bStatus);
 	}
-    // DO4 の Lo / Hi をトグル
-    //bPortRead(DO4) ? vPortSetHi(DO4) : vPortSetLo(DO4);
 
 	return;
 }
@@ -623,12 +603,6 @@ static void vInitHardware(int f_warm_start) {
 	// Serial Port の初期化
 	vSerialInit();
 
-	/////////////////////////////////
-    // 使用ポートの設定
-    vPortAsInput(DI1);		//	DI1:12
-    vPortAsOutput(DO4);		//	DO4:9
-    vPortSetLo(DO4);
-    /////////////////////////////////
 
 	// PWM の初期化
 
@@ -655,7 +629,7 @@ static void vInitHardware(int f_warm_start) {
 			sTimerPWM[i].u16duty = 1024; // 1024=Hi, 0:Lo
 			sTimerPWM[i].bPWMout = TRUE;
 			sTimerPWM[i].bDisableInt = TRUE; // 割り込みを禁止する指定
-			//sTimerPWM[i].bDisableInt = FALSE; // 割り込みを禁止する指定
+			//sTimerPWM[i].bDisableInt = FALSE; // （変更）割り込みを許可する指定
 			sTimerPWM[i].u8Device = au8TimTbl[i];
 			vTimerConfig(&sTimerPWM[i]);
 			vTimerStart(&sTimerPWM[i]);
@@ -672,6 +646,14 @@ static void vInitHardware(int f_warm_start) {
 		 sAppData.sFlash.sData.u8mode ==  PKT_ID_MPL115A2	) {
 		vSMBusInit();
 	}
+
+	/////////////////////////////////
+    // 使用ポートの設定
+    //vPortAsInput(DI1);		//	DI1:12
+    vPortAsOutput(DO3);		//	DO3
+    vPortSetLo(DO3);
+    /////////////////////////////////
+
 }
 
 /**
@@ -744,6 +726,12 @@ void vPortSetSns(bool_t bActive) {
 	}
 
 	vPortSet_TrueAsLo(DIO_SNS_POWER, bActive);
+
+	static bool_t b=TRUE;
+	b=!b;
+	if(b)	vPortSetLo(DO3);
+	else	vPortSetHi(DO3);
+
 }
 /****************************************************************************/
 /***        END OF FILE                                                   ***/
